@@ -16,8 +16,8 @@ function commit() {
 
 # 定义push方法
 function push(){
-    # 本地分支推送文件到远程仓库gitee-main的main分支。 gitee-main是gitee的远程仓库别名
-    git push origin gitee-main
+    # 本地分支推送文件到远程仓库gitee-origin的main分支。 gitee-origin是gitee的远程仓库别名
+    git push gitee-origin main
     # 本地分支推送文件到远程仓库github-origin的main分支。github-origin是github的远程仓库别名
     git push github-origin main
     # $?可以获取git push 命令是否运行成功，成功返回0，否则非0。
