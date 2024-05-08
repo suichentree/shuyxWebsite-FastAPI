@@ -2,7 +2,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 # 导入module_system的模型类
-# from module_system import SysUser
+from module_system.entity import *
+
 
 # mysql数据库的连接URL
 MYSQL_DATABASE_URL = "mysql+pymysql://root:123456@localhost:3306/shuyx_website_db"
@@ -18,5 +19,7 @@ db_session = Session()
 from sqlalchemy.ext.declarative import declarative_base
 my_Base = declarative_base()
 
-my_Base.metadata.create_all(my_engine)
-
+# 单独运行该文件的时候，会创建数据库
+if __name__ == "__main__":
+    print("ss")
+    my_Base.metadata.create_all(my_engine)
