@@ -2,6 +2,7 @@
 from sqlalchemy import Column, Integer, String ,DateTime,CHAR,func
 # 导入sqlalchemy的Base类
 from sqlalchemy.ext.declarative import declarative_base
+# 创建基类Base
 Base = declarative_base()
 
 class SysPosition(Base):

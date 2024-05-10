@@ -7,7 +7,10 @@ from sqlalchemy.ext.declarative import declarative_base
 MYSQL_DATABASE_URL = "mysql+pymysql://root:123456@localhost:3306/shuyx_website_db"
 
 # 创建数据库引擎myEngine
-myEngine = create_engine(MYSQL_DATABASE_URL,echo=True)
+myEngine = create_engine(MYSQL_DATABASE_URL,
+    pool_size=5,            # 连接池大小
+    pool_timeout=30,        # 池中没有线程最多等待的时间，否则报错
+    echo=True)
 
 # 创建会话对象mySession
 mySession = sessionmaker(autocommit=False, autoflush=False, bind=myEngine)
