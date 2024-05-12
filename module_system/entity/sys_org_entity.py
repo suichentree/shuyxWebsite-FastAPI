@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # 创建基类Base
 Base = declarative_base()
 
-class SysOrg(Base):
+class SysOrgEntity(Base):
     """
     组织机构表 sys_org
     """

@@ -13,7 +13,8 @@ myEngine = create_engine(MYSQL_DATABASE_URL,
     echo=True)
 
 # 创建会话对象mySession
-mySession = sessionmaker(autocommit=False, autoflush=False, bind=myEngine)
+db_ession = sessionmaker(autocommit=False, autoflush=False, bind=myEngine)
+mySession = db_ession()
 
 # 创建基类myBase
 myBase = declarative_base()

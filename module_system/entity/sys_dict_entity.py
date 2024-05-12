@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # 创建基类Base
 Base = declarative_base()
 
-class SysDict(Base):
+class SysDictEntity(Base):
     """
     字典表 sys_dict
     """

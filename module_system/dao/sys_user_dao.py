@@ -1,18 +1,20 @@
-from module_system.entity.sys_user_eneity import SysUser
-from sqlalchemy.orm import Session
+from module_system.entity.sys_user_eneity import SysUserEntity
+from module_system.dto.sys_user_dto import SysUserDTO
+from config.database_config import mySession
 
 class SysUserDao:
 
     @classmethod
-    def add_user(cls, db: Session, user):
-        """
-        新增用户数据库操作
-        :param db: orm对象
-        :param user: 用户对象
-        :return: 新增校验结果
-        """
-        db_user = SysUser(**user.model_dump(exclude={'admin'}))
-        db.add(db_user)
-        db.flush()
+    def get_user_list(cls,user: SysUserDTO):
+        ## dto转换为entity
+        sys_user_entity = SysUserEntity(**user)
+        res = mySession.query(sys_user_entity).first()
+        return res
 
-        return db_user
+    @classmethod
+    def add_user(cls,user:SysUserDTO):
+        ## dto转换为entity
+        sys_user_entity = SysUserEntity(**user)
+        mySession.add(sys_user_entity)
+        mySession.commit()
+        return 1

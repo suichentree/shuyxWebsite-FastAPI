@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # 创建基类Base
 Base = declarative_base()
 
-class SysRole(Base):
+class SysRoleEntity(Base):
     """
     角色表 sys_role
     """

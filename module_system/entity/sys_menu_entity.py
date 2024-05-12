@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # 创建基类Base
 Base = declarative_base()
 
-class SysMenu(Base):
+class SysMenuEntity(Base):
     """
     菜单表 sys_menu
     """
