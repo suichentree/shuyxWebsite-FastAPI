@@ -1,8 +1,9 @@
 from module_system.dao.sys_user_dao import SysUserDao
 from module_system.entity.sys_user_eneity import SysUserEntity
+from config.database_config import session_maker
 
-one = SysUserEntity(userId=1,userName="xiaoming")
+with session_maker() as db:
+    res = db.query(SysUserEntity).filter(SysUserEntity.userId == 1).all()
+    print("result=", res)
 
-result = SysUserDao.get_user_list(one)
 
-print("result=",result)
