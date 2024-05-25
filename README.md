@@ -1,5 +1,7 @@
 # shuyxWebsite-FastAPI
 
+感觉用FastAPI写web后端太麻烦了，暂时中止
+
 #### 介绍
 用python的fastapi框架重写的shuyxWebsite
 

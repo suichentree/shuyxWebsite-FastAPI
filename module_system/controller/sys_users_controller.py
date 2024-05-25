@@ -1,11 +1,28 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter
+from config.log_config import logger
 from module_system.dto.sys_user_dto import SysUserDTO
 from module_system.service.sys_user_service import SysUserService
 
-sysUserController = APIRouter(prefix='/system/user')
+SysUserController = APIRouter(prefix='/system/user')
 
-@sysUserController.get("/list", response_model=SysUserDTO)
-async def get_user_list(dto: SysUserDTO):
-    # 获取分页数据
-    user_page_query_result = SysUserService.get_user_list(dto)
-    return user_page_query_result
+@SysUserController.post("/listPage")
+async def get_user_list(pageSize:int,pageNum:int):
+    logger.info(f'/system/user/list, pageSize = {pageSize} pageNum = {pageNum}')
+    try:
+        res = SysUserService.get_user_list(pageSize,pageNum)
+        return res
+    except Exception as e:
+        return logger.exception(e)
+
+@SysUserController.post("/listBy")
+async def get_user_list_by(dto: SysUserDTO):
+    logger.info(f'/system/user/listBy, dto = {dto}')
+    try:
+        res = SysUserService.get_user_list_by(dto)
+        return res
+    except Exception as e:
+        return logger.exception(e)
+
+
+
+
